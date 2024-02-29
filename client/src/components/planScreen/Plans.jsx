@@ -9,7 +9,7 @@ const Plans = ({name , amt  , features}) => {
   const navigate = useNavigate()
 
   const paymentHandler = async(req,res) => {
-    const response = await axios.post("http://localhost:3000/order" , {amt})
+    const response = await axios.post("https://netflix-53tw.onrender.com/order" , {amt})
     const order =  response.data
     console.log(order);
 
@@ -23,7 +23,7 @@ const Plans = ({name , amt  , features}) => {
         "image": "https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png",
         "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler":  async function (order){
-          axios.post("http://localhost:3000/order/validate" , order)
+          axios.post("https://netflix-53tw.onrender.com/order/validate" , order)
           .then((res) => {
             console.log(res);
             navigate("/")
